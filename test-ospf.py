@@ -1,10 +1,13 @@
 """
 Author: Dylan Cruz
 """
+import os
 from nornir import InitNornir
 from nornir_scrapli.tasks import send_command
 
 nr = InitNornir(config_file="config.yaml")
+nr.inventory.defaults.username = os.getenv("USERNAME")
+nr.inventory.defaults.password = os.getenv("PASSWORD")
 
 def pull_info(task):
     """
